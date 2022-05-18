@@ -23,7 +23,15 @@ namespace RestaurantBillCalculator
         public MainWindow()
         {
             InitializeComponent();
+            Beverage soda = new Beverage("Beverage", "Soda", 1.95m);
+            Beverage[] beverages = new Beverage[]
+            {
+                new Beverage("Beverage", "Soda", 1.95m)
+
+            };
+
         }
+        
     }
 
     public class Beverage
