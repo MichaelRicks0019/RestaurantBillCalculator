@@ -1,0 +1,28 @@
+﻿<Window x:Class="RestaurantBillCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantBillCalculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="ComboBoxLayout">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" x:Name="beverage"/>
+            <ColumnDefinition Width="*" x:Name="appetizer"/>
+            <ColumnDefinition Width="*" x:Name="mainCourse"/>
+            <ColumnDefinition Width="*" x:Name="dessert"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" x:Name="menuSelectionRow"/>
+            <RowDefinition Height="50" x:Name="comboBoxRow" />
+        </Grid.RowDefinitions>
+        <Label Content="Beverage" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        <Label Content="Appetizer" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        <Label Content="Main Couse" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        <Label Content="Dessert" Grid.Row="0" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        <ComboBox Name="beverageComboBox" Grid.Column="0" Grid.Row="1" Margin="10,25,10,-5" >
+           
+        </ComboBox>
+    </Grid>
+</Window>
