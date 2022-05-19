@@ -20,53 +20,24 @@ namespace RestaurantBillCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Beverage> beverages = new List<Beverage>();
         public MainWindow()
         {
             InitializeComponent();
-            Beverage soda = new Beverage("Beverage", "Soda", 1.95m);
-            Beverage[] beverages = new Beverage[]
-            {
-                new Beverage("Beverage", "Soda", 1.95m)
 
-            };
+            beverages.Add(new Beverage("Beverage", "Soda", 1.95m));
+            beverages.Add(new Beverage("Beverage", "Tea", 1.50m));
+            beverages.Add(new Beverage("Beverage", "Coffee", 1.25m));
+            beverages.Add(new Beverage("Beverage", "Mineral Water", 2.95m));
+            beverages.Add(new Beverage("Beverage", "Juice", 2.50m));
+            beverages.Add(new Beverage("Beverage", "Milk", 1.50m));
+
+            beverageComboBox.ItemsSource = beverages;
 
         }
         
     }
 
-    public class Beverage
-    {
-        private string Category { get; set; }
-        private string Name { get; set; }
-        private decimal Price { get; set; }
-
-        public Beverage (string category, string name, decimal price)
-        {
-            Category = category;
-            Name = name;
-            Price = price;
-        }
-
-        public string GetNameAndPrice()
-        {
-            return $"{Name}   ${Price}";
-        }
-
-        public string GetCategory ()
-        {
-            return Category;
-        }
-
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public decimal GetPrice()
-        {
-            return Price;
-        }
-
-    }
+ 
 
 }

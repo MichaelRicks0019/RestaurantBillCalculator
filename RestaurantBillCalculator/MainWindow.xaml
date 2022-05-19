@@ -8,21 +8,70 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid x:Name="ComboBoxLayout">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*" x:Name="beverage"/>
             <ColumnDefinition Width="*" x:Name="appetizer"/>
             <ColumnDefinition Width="*" x:Name="mainCourse"/>
             <ColumnDefinition Width="*" x:Name="dessert"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="30" x:Name="menuSelectionRow"/>
             <RowDefinition Height="50" x:Name="comboBoxRow" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Label Content="Beverage" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
-        <Label Content="Appetizer" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
-        <Label Content="Main Couse" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
-        <Label Content="Dessert" Grid.Row="0" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
-        <ComboBox Name="beverageComboBox" Grid.Column="0" Grid.Row="1" Margin="10,25,10,-5" >
-           
+        
+        <Label Content="Beverage" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        <Label Content="Appetizer" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        <Label Content="Main Couse" Grid.Row="1" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        <Label Content="Dessert" Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+        
+        <ComboBox x:Name="beverageComboBox" Grid.Column="1" Grid.Row="2" Margin="10">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Right" Margin="20,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
+
+        <ComboBox x:Name="appetizerComboBox" Grid.Column="2" Grid.Row="2" Margin="10">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Right" Margin="20,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox x:Name="mainCourseComboBox" Grid.Column="3" Grid.Row="2" Margin="10">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Right" Margin="20,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox x:Name="dessertComboBox" Grid.Column="4" Grid.Row="2" Margin="10">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Right" Margin="20,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
     </Grid>
 </Window>
