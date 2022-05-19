@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace RestaurantBillCalculator
 {
-    public class Beverage
+    public class MainCourse
     {
         private string category;
         private string name;
         private decimal price;
 
-        public Beverage(string category, string name, decimal price)
+        public MainCourse(string category, string name, decimal price)
         {
             this.category = category;
             this.name = name;
