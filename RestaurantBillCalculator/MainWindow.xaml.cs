@@ -25,6 +25,10 @@ namespace RestaurantBillCalculator
         public List<MainCourse> mainCourses = new List<MainCourse>();
         public List<Dessert> desserts = new List<Dessert>();
         public decimal totalPrice;
+        Beverage beveragePlaceHolder = new Beverage();
+        Appetizer appetizerPlaceHolder = new Appetizer();
+        MainCourse maincoursePlaceHolder = new MainCourse();
+        Dessert dessertPlaceHolder = new Dessert();
         public MainWindow()
         {
             InitializeComponent();
@@ -60,12 +64,13 @@ namespace RestaurantBillCalculator
             desserts.Add(new Dessert("Dessert", "Mud Pie", 4.95m));
             desserts.Add(new Dessert("Dessert", "Apple Crisp", 5.95m));
 
-
-
             beverageComboBox.ItemsSource = beverages;
             appetizerComboBox.ItemsSource = appetizers;
             mainCourseComboBox.ItemsSource = mainCourses;
             dessertComboBox.ItemsSource = desserts;
+
+            
+           
         }
 
         private void beverageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -75,7 +80,14 @@ namespace RestaurantBillCalculator
 
         private void priceButton_Click(object sender, RoutedEventArgs e)
         {
-            beverageComboBox.SelectedItem
+            beveragePlaceHolder = (Beverage)beverageComboBox.SelectedItem;
+            appetizerPlaceHolder = (Appetizer)appetizerComboBox.SelectedItem;
+            maincoursePlaceHolder = (MainCourse)mainCourseComboBox.SelectedItem;
+            dessertPlaceHolder = (Dessert)dessertComboBox.SelectedItem;
+
+            decimal totalPrice = this.beveragePlaceHolder.Price + this.appetizerPlaceHolder.Price;//ADD THE REST HERE
+            totalPriceLabel.Text = this.beveragePlaceHolder.Price.ToString();
+            
         }
     }
 

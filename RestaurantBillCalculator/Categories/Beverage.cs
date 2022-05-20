@@ -19,6 +19,11 @@ namespace RestaurantBillCalculator
             this.price = price;
         }
 
+        public Beverage()
+        {
+            
+        }
+
         public string GetNameAndPrice
         {
             get
@@ -50,6 +55,7 @@ namespace RestaurantBillCalculator
                 return price;
             }
         }
+
 
         public override string ToString()
         {

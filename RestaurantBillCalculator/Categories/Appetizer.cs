@@ -19,6 +19,11 @@ namespace RestaurantBillCalculator
             this.price = price;
         }
 
+        public Appetizer()
+        {
+
+        }
+
         public string GetNameAndPrice
         {
             get
