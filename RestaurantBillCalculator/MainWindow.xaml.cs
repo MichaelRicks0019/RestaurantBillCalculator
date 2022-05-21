@@ -32,10 +32,17 @@ namespace RestaurantBillCalculator
         Appetizer appetizerPlaceHolder = new Appetizer();
         MainCourse maincoursePlaceHolder = new MainCourse();
         Dessert dessertPlaceHolder = new Dessert();
+
+        Beverage beverageNone = new Beverage("Beverage", "None", 0m);
+        Appetizer appetizerNone = new Appetizer("Appetizer", "None", 0m);
+        MainCourse maincourseNone = new MainCourse("Main Course", "None", 0m);
+        Dessert dessertNone = new Dessert("Dessert", "None", 0m);
+
         public MainWindow()
         {
             InitializeComponent();
 
+            beverages.Add(beverageNone);
             beverages.Add(new Beverage("Beverage", "Soda", 1.95m));
             beverages.Add(new Beverage("Beverage", "Tea", 1.50m));
             beverages.Add(new Beverage("Beverage", "Coffee", 1.25m));
@@ -43,6 +50,7 @@ namespace RestaurantBillCalculator
             beverages.Add(new Beverage("Beverage", "Juice", 2.50m));
             beverages.Add(new Beverage("Beverage", "Milk", 1.50m));
 
+            appetizers.Add(appetizerNone);
             appetizers.Add(new Appetizer("Appetizer", "Buffalo Wings", 5.95m));
             appetizers.Add(new Appetizer("Appetizer", "Buffalo Fingers", 6.95m));
             appetizers.Add(new Appetizer("Appetizer", "Potato Skins", 8.95m));
@@ -51,6 +59,7 @@ namespace RestaurantBillCalculator
             appetizers.Add(new Appetizer("Appetizer", "Shrimp Cocktail", 12.95m));
             appetizers.Add(new Appetizer("Appetizer", "Chips and Salsa", 6.95m));
 
+            mainCourses.Add(maincourseNone);
             mainCourses.Add(new MainCourse("Main Course", "Seafood Alfredo", 15.95m));
             mainCourses.Add(new MainCourse("Main Course", "Chicken Alfredo", 13.95m));
             mainCourses.Add(new MainCourse("Main Course", "Chicken Picatta", 13.95m));
@@ -61,6 +70,7 @@ namespace RestaurantBillCalculator
             mainCourses.Add(new MainCourse("Main Course", "Turkey Dinner", 13.95m));
             mainCourses.Add(new MainCourse("Main Course", "Stuffed Chicken", 14.95m));
 
+            desserts.Add(dessertNone);
             desserts.Add(new Dessert("Dessert", "Apple Pie", 5.95m));
             desserts.Add(new Dessert("Dessert", "Sundae", 3.95m));
             desserts.Add(new Dessert("Dessert", "Carrot Cake", 5.95m));
@@ -72,7 +82,10 @@ namespace RestaurantBillCalculator
             mainCourseComboBox.ItemsSource = mainCourses;
             dessertComboBox.ItemsSource = desserts;
 
-            
+            beverageComboBox.SelectedItem = beverageNone;
+            appetizerComboBox.SelectedItem = appetizerNone;
+            mainCourseComboBox.SelectedItem = maincourseNone;
+            dessertComboBox.SelectedItem = dessertNone;
            
         }
 
@@ -88,23 +101,12 @@ namespace RestaurantBillCalculator
             maincoursePlaceHolder = (MainCourse)mainCourseComboBox.SelectedItem;
             dessertPlaceHolder = (Dessert)dessertComboBox.SelectedItem;
 
-            if (beveragePlaceHolder == null || appetizerPlaceHolder == null || maincoursePlaceHolder == null || dessertPlaceHolder == null)
-            {
-
-            }
-
-            try
-            {
-                totalPrice =
-                    this.beveragePlaceHolder.Price +
-                    this.appetizerPlaceHolder.Price +
-                    this.maincoursePlaceHolder.Price +
-                    this.dessertPlaceHolder.Price;
-            }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show($"{ex.Message} Select an item from each box");
-            }
+            totalPrice =
+                this.beveragePlaceHolder.Price +
+                this.appetizerPlaceHolder.Price +
+                this.maincoursePlaceHolder.Price +
+                this.dessertPlaceHolder.Price;
+           
 
             totalPriceText.Text = totalPrice.ToString();
 
@@ -115,6 +117,14 @@ namespace RestaurantBillCalculator
 
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
+            totalPrice = 0;
+            totalPriceText.Text = totalPrice.ToString();
+            totalPriceAfterTaxes = 0;
+            totalPriceAfterTaxesText.Text = totalPriceAfterTaxes.ToString();
+            beverageComboBox.SelectedItem = beverageNone;
+            appetizerComboBox.SelectedItem = appetizerNone;
+            mainCourseComboBox.SelectedItem = maincourseNone;
+            dessertComboBox.SelectedItem = dessertNone;
 
         }
     }
