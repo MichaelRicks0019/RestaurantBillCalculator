@@ -25,6 +25,9 @@ namespace RestaurantBillCalculator
         public List<MainCourse> mainCourses = new List<MainCourse>();
         public List<Dessert> desserts = new List<Dessert>();
         public decimal totalPrice;
+        public decimal totalPriceAfterTaxes;
+
+        //These take the selected combo-box value.
         Beverage beveragePlaceHolder = new Beverage();
         Appetizer appetizerPlaceHolder = new Appetizer();
         MainCourse maincoursePlaceHolder = new MainCourse();
@@ -85,9 +88,34 @@ namespace RestaurantBillCalculator
             maincoursePlaceHolder = (MainCourse)mainCourseComboBox.SelectedItem;
             dessertPlaceHolder = (Dessert)dessertComboBox.SelectedItem;
 
-            decimal totalPrice = this.beveragePlaceHolder.Price + this.appetizerPlaceHolder.Price;//ADD THE REST HERE
-            totalPriceLabel.Text = this.beveragePlaceHolder.Price.ToString();
-            
+            if (beveragePlaceHolder == null || appetizerPlaceHolder == null || maincoursePlaceHolder == null || dessertPlaceHolder == null)
+            {
+
+            }
+
+            try
+            {
+                totalPrice =
+                    this.beveragePlaceHolder.Price +
+                    this.appetizerPlaceHolder.Price +
+                    this.maincoursePlaceHolder.Price +
+                    this.dessertPlaceHolder.Price;
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show($"{ex.Message} Select an item from each box");
+            }
+
+            totalPriceText.Text = totalPrice.ToString();
+
+            totalPriceAfterTaxes = totalPrice + (totalPrice * .0565m);
+            totalPriceAfterTaxesText.Text = totalPriceAfterTaxes.ToString();
+                      
+        }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
